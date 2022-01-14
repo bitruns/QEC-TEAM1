@@ -20,5 +20,9 @@ You can also manually reupload project files (or edit their code using the littl
 
 Either is fine so long as there are consistent changes/developments being made every hour.
 
-
-
+# Team Members
+The following should be a list by name of your team. If you think you're in the wrong team EMAIL ME ASAP.    
+  Andrew Fryer  
+Kyle Singer  
+Jamie Won  
+Tristan Lawson  

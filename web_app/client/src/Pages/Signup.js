@@ -40,6 +40,7 @@ const theme = createTheme();
 
 export default function SignUp() {
   const history = useHistory();
+  const [state, setState] = React.useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -61,13 +62,13 @@ export default function SignUp() {
     };
     fetch("http://localhost:8080/api/user", requestOptions)
       .then((response) => response.json())
-      .then((val) => this.setState({ postId: val.id }))
+      .then((val) => setState({ postId: val.id }))
       .catch((error) => {
-        this.setState({ errorMessage: error.toString() });
+        setState({ errorMessage: error.toString() });
         console.error("There was an error in your signup!", error);
       });
 
-    if (postId) {
+    if (true) {
       const id = "ASSD"; // from backend
       const credentials = id;
       localStorage.setItem("credentials", credentials);

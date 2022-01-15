@@ -44,6 +44,7 @@ export default function SignInSide() {
   const [error, setError] = useState(false);
   const [errorText, setErrorText] = useState(false);
   const history = useHistory();
+  const [state, setState] = React.useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -56,6 +57,7 @@ export default function SignInSide() {
       //   email: data.get('email'),
       //   password: data.get('password'),
       // });
+      
 
       const userData = {
         userName: "",
@@ -69,16 +71,16 @@ export default function SignInSide() {
       };
       fetch("http://localhost:8080/api/user", requestOptions)
         .then((response) => response.json())
-        .then((val) => this.setState({ postId: val.id }))
+        .then((val) => setState({ postId: val.id }))
         .catch((error) => {
           this.setState({ errorMessage: error.toString() });
           console.error("There was an error in Login!", error);
         });
 
       // if status OK
-      if (postId) {
+      if (state.postId) {
         // storing credentials
-        const credentials = data.get("email") + data.get("email");
+        const credentials = state.postId;
         localStorage.setItem("credentials", credentials);
         history.push({
           pathname:

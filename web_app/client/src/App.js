@@ -6,12 +6,19 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import PageNotFound from './Pages/PageNotFound';
 import SignUp from './Pages/Signup';
+import Header from './Components/Header';
 
 function App() {
   return (
     <div className="App">
+      <Header/>
       {/* The Switch component wraps around the Routes; A Route is a link to a new page */}
       <Switch> 
+        <Route exact path={"/"}
+          render={props => (
+            <Home {...props}/>
+          )}
+        />
         <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_HOME}
           render={props => (
             <Home {...props}/>

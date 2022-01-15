@@ -1,6 +1,6 @@
 // Custom Header and menu
 import React from 'react';
-import { AppBar, Fade, Icon, Menu, MenuItem, Typography } from '@material-ui/core';
+import { AppBar, Fade, Icon, Menu, MenuItem } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import HeaderLink from './HeaderLink';
 import ChildModal from './Notification';

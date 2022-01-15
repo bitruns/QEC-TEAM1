@@ -33,21 +33,36 @@ const style = {
 
 export default function BasicModal() {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const [response, setResponse] = React.useState(false);
+    const handleOpen = () => {
+        setResponse(false);
+        setOpen(true);
+    }
     const handleClose = () => setOpen(false);
     //   Custom styling
     const classes = useStyles();
 
     // Behaviour on submit
     const handleClick = (goalReached) => {
-        if (goalReached) {
-
-        }
+        setResponse(goalReached ? "Greatt!": "You can do it next time!");
+        fetch("/api/habitSuccess", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: localStorage.getItem('credentials'),
+                habitId_sleeping: 0,
+                success: goalReached,
+            }),
+        }).then(res => res.json()).then((res) => setResponse(res));
     }
 
     return (
     <div>
-        <div onClick={handleOpen}><img src='./logo.png' className={classes.logo} /></div>
+        {/* clickable button */}
+        <div onClick={handleOpen}><img alt="Habits" src='./logo.png' className={classes.logo} /></div>
+        {/* Popup */}
         <Modal
             open={open}
             onClose={handleClose}
@@ -55,14 +70,16 @@ export default function BasicModal() {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-                This is a reminder
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Did you make your goal?
-            </Typography>
-            <Button variant="outlined" color="error" onClick={() => handleClick(true)}>No</Button>
-            <Button variant="outlined" color="success" onClick={() => handleClick(true)}>Yes</Button>
+                {response || <>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                    This is a reminder
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Did you make your goal?
+                </Typography>
+                <Button color="error" onClick={() => handleClick(true)}>No</Button>
+                <Button color="success" onClick={() => handleClick(false)}>Yes</Button>
+                </>}
             </Box>
         </Modal>
         </div>

@@ -1,3 +1,5 @@
+// Test hit endpoint
+
 import React, { useEffect, useState } from 'react';
 import {createUser} from '../APICalls';
 

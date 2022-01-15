@@ -37,7 +37,7 @@ const Habits = (props) => {
   const [reminder, setReminder] = useState("00:00");
   const [newHabitExplanation, setNewHabitExplanation] = useState("");
   const classes = useStyles();
-
+// get habits from database
   useEffect(() => {
     async function getHabits() {
         const res = await fetch('/api/habit', {
@@ -97,6 +97,8 @@ const Habits = (props) => {
   // Outputs loading while waiting on backend
   if (!habits) return "Loading ....";
 
+  // the parts that people see
+  // Lets users enter a habit ir choose one ffrom the database, their perceived score on it, and when they want a reminder to do it
   return (
     <Box spacing={2}>
       <Box>

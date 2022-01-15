@@ -18,7 +18,7 @@ const create = async (req, res) => {
 };
 
 const read = async (req, res) => {
-  const user = await User.findById(req.query._id).exec();
+  const user = await User.findById(req.query._id).exec(); // .populate('habits/habitId') ?
 
   if(user) {
     res.json(user);

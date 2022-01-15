@@ -39,6 +39,21 @@ function App() {
             <Login {...props}/>
           )}
         />
+        <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_PROFILE}
+          render={props => (
+            <Home {...props}/>
+          )}
+        />
+        <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_HABITTRACKER}
+          render={props => (
+            <Home {...props}/>
+          )}
+        />
+        <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_HABITSEARCH}
+          render={props => (
+            <Home {...props}/>
+          )}
+        />
         <Route 
           render={() => <PageNotFound/>}
         />

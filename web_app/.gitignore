@@ -1,0 +1,12 @@
+*.ignore
+node_modules
+*.swp
+*.env
+todo
+.vscode
+
+# client build
+client/build
+
+# credential files:
+credentials.json

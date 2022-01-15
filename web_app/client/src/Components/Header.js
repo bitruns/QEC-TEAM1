@@ -69,6 +69,7 @@ const Header = (props) => {
                 <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_HOME} body={process.env.REACT_APP_PAGES_TITLE_HOME} /></MenuItem>
                 <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_SIGNUP} body={process.env.REACT_APP_PAGES_TITLE_SIGNUP} /></MenuItem>
                 <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_LOGIN} body={process.env.REACT_APP_PAGES_TITLE_LOGIN} /></MenuItem>
+                <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_HABITTRACKER} body={process.env.REACT_APP_PAGES_TITLE_HABITTRACKER} /></MenuItem>
                 {/* <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_LOGOUT} body={process.env.REACT_APP_PAGES_TITLE_LOGOUT} /></MenuItem> */}
             </Menu>
 		</AppBar>

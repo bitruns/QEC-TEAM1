@@ -8,6 +8,7 @@ import PageNotFound from './Pages/PageNotFound';
 import SignUp from './Pages/Signup';
 import ChooseHabit from './Pages/ChooseHabit';
 import Header from './Components/Header';
+import HabitTracker from './Pages/HabitTracker';
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
         />
         <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_HABITTRACKER}
           render={props => (
-            <Home {...props}/>
+            <HabitTracker {...props}/>
           )}
         />
         <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_CHOOSEHABIT + "/*"}

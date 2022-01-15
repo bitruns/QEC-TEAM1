@@ -4,13 +4,12 @@
  * Source Code can be found here:
  * https://github.com/mui-org/material-ui/blob/master/docs/src/pages/getting-started/templates/sign-in-side/SignInSide.js
  */
-import * as React from 'react';
+import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -23,8 +22,9 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      {/* Modified to be our site name*/}
+      <Link color="inherit" href="#/">
+        {process.env.REACT_APP_SITE_NAME}
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -35,14 +35,40 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+  // To display error
+  const [error, setError] = useState(false);
+  const [errorText, setErrorText] = useState(false);
+  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // Modified to collect information and send to backend
+    // Checks to see if it is a valid entry, otherwise, rejects it and displays an error
+    if (data.get('email') && data.get('password') ){
+      
+      // TODO: HIT BACKEND
+      console.log({
+        email: data.get('email'),
+        password: data.get('password'),
+      });
+      // if status OK
+      if (true) {
+        // storing credentials
+        const credentials = data.get('email')+ data.get('email');
+        localStorage.setItem('credentials', credentials);
+        history.push({
+          pathname: "/Habits/" + credentials
+        });
+      } else {
+        // if status invalid
+        setError(true);
+        setErrorText("Invalid Credentials");
+      }
+    } else {
+      setError(true);
+      setErrorText("Both fields must be filled out");
+    }
   };
 
   return (
@@ -77,7 +103,7 @@ export default function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Log in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -89,6 +115,8 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                // models error behaviour
+                error={error}
               />
               <TextField
                 margin="normal"
@@ -99,10 +127,8 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                // models error behaviour
+                error={error}
               />
               <Button
                 type="submit"
@@ -110,16 +136,20 @@ export default function SignInSide() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Log In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Typography color="secondary">
+                    {error ? errorText : null}
+                  </Typography>
+                    
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item>
+                  {/* Changed to hit login page */}
+                  <Link href="#/Login" variant="body2"> 
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

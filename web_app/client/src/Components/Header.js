@@ -1,76 +1,70 @@
-import React, {useState} from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+// Custom Header and menu
+import React from 'react';
+import { AppBar, Fade, Icon, Menu, MenuItem, Typography } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
+import HeaderLink from './HeaderLink';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+        display: "flex",
+        flexDirection: "row",
+		alignItems: "center",
+		alignContent: "center",
+        textAlign: "center",
+        justifyContent: "space-between",
+    },
+	icon: {
+        "&:hover": {
+            cursor: "pointer",
+		},
+        padding: "2vw",
+        color: "white",
+	},
+	hiddenicon: {
+        padding: "2vw",
+        color: theme.palette.primary.main,
+	},
+    item: {
+        backgroundColor: "white"
+    },
+}));
 
 
 const Header = (props) => {
-    const [anchorEl, setAnchorEl] = useState(null);
+
+	const classes = useStyles();
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
   
-  
-    const handleMenu = (event) => {
+    const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
   
     const handleClose = () => {
       setAnchorEl(null);
     };
+
     return (
-        <Box>
-        <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {process.env.REACT_APP_SITE_NAME}
-          </Typography>
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-        </Toolbar>
-      </AppBar>
-    </Box>
-    )
+		<AppBar position="sticky" className={classes.root}>
+      <Icon onClick={handleClick} className={classes.icon} variant="h4" color="primary">menu</Icon>
+      <Typography variant="h6">{process.env.REACT_APP_SITE_NAME}</Typography>
+      <Icon onClick={handleClick} className={classes.hiddenicon} variant="h4" color="primary">filter-variant</Icon>
+      <Menu
+          id="fade-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={open}
+          onClose={handleClose}
+          TransitionComponent={Fade}
+      >
+          <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_HOME} body={process.env.REACT_APP_PAGES_TITLE_HOME} /></MenuItem>
+          <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_SIGNUP} body={process.env.REACT_APP_PAGES_TITLE_SIGNUP} /></MenuItem>
+          <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_LOGIN} body={process.env.REACT_APP_PAGES_TITLE_LOGIN} /></MenuItem>
+          {/* <MenuItem onClick={handleClose}><HeaderLink path={"/" + process.env.REACT_APP_PAGES_PATH_LOGOUT} body={process.env.REACT_APP_PAGES_TITLE_LOGOUT} /></MenuItem> */}
+      </Menu>
+		</AppBar>
+	);
 }
 
 export default Header;

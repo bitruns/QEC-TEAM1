@@ -6,6 +6,7 @@ const habitSchema = new mongoose.Schema({
     required: true,
   },
   explanation: String,
+  source: String,
 });
 
 const Habit = mongoose.model('Habits', habitSchema);

@@ -13,11 +13,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
   habits: [
     {
       habitId: { type: mongoose.Schema.Types.ObjectId, ref: 'Habits' },
       totalNum: Number,
       numSuccess: Number,
+      reminder: Date, // TODO: allow different frequencies
     },
   ],
 });

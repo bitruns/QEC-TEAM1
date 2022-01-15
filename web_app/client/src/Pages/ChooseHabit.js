@@ -41,15 +41,11 @@ const Habits = (props) => {
 
   useEffect(() => {
     async function getHabits() {
-      // TODO: HIT API
-        await setHabits([{
-          label:"sleep on time",
-          id: 1
-        }, {
-          label:"eat regularly",
-          id: 2
-        }]);
-        setSelectedValue(habits[0]);
+        const res = await fetch('/api/habit', {
+            method: 'GET',
+        });
+        const resBody = await res.json();
+        setHabits(resBody.habits);
     }
     getHabits();
   }, []);

@@ -18,13 +18,25 @@ const create = async (req, res) => {
 };
 
 const read = async (req, res) => {
-  const habit = await Habit.findById(req.query._id).exec();
+  const id = req.query._id;
+  if(id) {
+    const habit = await Habit.findById(id).exec();
 
-  if(habit) {
-    res.json(habit);
+    if(habit) {
+      res.json(habit);
+    } else {
+      res.status(400).send("Habit does not exist");
+    }
   } else {
-    res.status(400).send("Habit does not exist");
+    const habits = await Habit.find().exec();
+
+    if(habits) {
+      res.json({ habits, });
+    } else {
+      res.status(400).send("Habits do not exist");
+    }
   }
+  
 };
 
 const update = async (req, res) => {
@@ -32,8 +44,6 @@ const update = async (req, res) => {
     property: "",
     ...req.body,
   };
-
-  console.log(req.query._id);
 
   const habit = await Habit.findByIdAndUpdate(req.query._id, updateObj, {new: true}).exec();
 

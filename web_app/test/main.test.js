@@ -48,8 +48,10 @@ t.test('expected UI flow', async t => {
     });
     t.is(res.status, 200);
     const resBody = await res.json();
-    const habitId = resBody.habits[0]._id;
-    t.is(habitId, habitId_reading);
+    // console.log(resBody);
+    const habitId = resBody.habits.filter(x => x._id == habitId_reading)[0];
+    t.ok(habitId);
+    console.log("habit id reading:" + habitId_reading)
   });
 
   const habitData = [
@@ -78,6 +80,8 @@ t.test('expected UI flow', async t => {
     });
     t.is(res.status, 200);
   });
+
+  // assert(false);
 
   let habitId_sleeping;
   await t.test('get user habits', async t => {
@@ -116,13 +120,13 @@ t.test('expected UI flow', async t => {
   // The frontend doesn't need to do this
   await t.test('delete habit', async t => {
     {
-      const res = await fetch(url + "?_id=" + habitId_sleeping, {
+      const res = await fetch(url + "/habit" + "?_id=" + habitId_sleeping, {
         method: 'DELETE',
       });
       t.is(res.status, 200);
     }
     {
-      const res = await fetch(url + "?_id=" + habitId_reading, {
+      const res = await fetch(url + "/habit" + "?_id=" + habitId_reading, {
         method: 'DELETE',
       });
       t.is(res.status, 200);

@@ -8,13 +8,12 @@ const create = async (req, res) => {
 
   try {
     await newUser.save();
+    res.json({
+      user: newUser,
+    });
   } catch(e) {
     res.status(500).send(e);
   }
-
-  res.json({
-    user: newUser,
-  });
 };
 
 const read = async (req, res) => {
@@ -32,8 +31,6 @@ const update = async (req, res) => {
     property: "",
     ...req.body,
   };
-
-  console.log(req.query._id);
 
   const user = await User.findByIdAndUpdate(req.query._id, updateObj, {new: true}).exec();
 

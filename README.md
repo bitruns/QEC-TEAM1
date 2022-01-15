@@ -1,14 +1,4 @@
-# Welcome TEAM-1 to your personal QEC Github Repository!
-
-Use this Repository to keep track of your project changes and collaborate on code.
-
-
-
-# As a key note... Push your progress every hour!
-
-Push any changes to your project EVERY HOUR, this is a **requirement** outlined in the delegate package and **failure to do so could be grounds for disqualification!!!** The updates dont have to be strictly 60 minutes apart, but there should be roughly 1 every hour.
-
-# About project
+# Hab!t
 We built a React web app with an expressJS backend and a mongoDB database.
 
 1. User signs up or logs in
@@ -18,12 +8,14 @@ We built a React web app with an expressJS backend and a mongoDB database.
 5. User receives push notification about habit with Yes/No option. If yes, provide an encouraging comment. If no, return a suggestion from the database and provide suggestion to the user
 6. Update habit score in the database based on response to notification
 
-# How to use
-
 # Installation Requirements
 ```Node``` and ```npm``` must be installed for 
 
-Run ```npm i```
+Run ```cd web-app && npm i && cd client && npm i```
+
+# Running servers
+Build front-end with ```cd web-app/client && npm run build```.
+Run back-end with ```npm run dev```.
 
 # Note on External Resources
 ## Commenting

@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
       totalNum: Number,
       numSuccess: Number,
       reminder: Date, // TODO: allow different frequencies
+      score: Number,
     },
   ],
 });

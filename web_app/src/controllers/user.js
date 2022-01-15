@@ -8,13 +8,12 @@ const create = async (req, res) => {
 
   try {
     await newUser.save();
+    res.json({
+      user: newUser,
+    });
   } catch(e) {
     res.status(500).send(e);
   }
-
-  res.json({
-    user: newUser,
-  });
 };
 
 const read = async (req, res) => {

@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 		alignContent: "center",
         textAlign: "center",
         justifyContent: "space-between",
+        marginBottom: theme.spacing(2),
     },
 	icon: {
         "&:hover": {

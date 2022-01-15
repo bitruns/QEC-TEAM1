@@ -16,6 +16,7 @@
  import Typography from '@mui/material/Typography';
  import Container from '@mui/material/Container';
  import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useHistory } from 'react-router-dom';
  
 function Copyright(props) {
   return (
@@ -33,6 +34,7 @@ function Copyright(props) {
  const theme = createTheme();
  
  export default function SignUp() {
+   const history = useHistory();
    const handleSubmit = (event) => {
      event.preventDefault();
      const data = new FormData(event.currentTarget);
@@ -43,6 +45,14 @@ function Copyright(props) {
        userName: data.get('userName'),
        password: data.get('password'),
      });
+     if (true) {
+       const id = "ASSD";// from backend
+       const credentials = id;
+       localStorage.setItem('credentials', credentials);
+        history.push({
+          pathname: "/" + process.env.REACT_APP_PAGES_PATH_CHOOSEHABIT + "/" + credentials
+        });
+     }
    };
  
    return (

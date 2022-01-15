@@ -58,7 +58,7 @@ export default function SignInSide() {
         const credentials = data.get('email')+ data.get('email');
         localStorage.setItem('credentials', credentials);
         history.push({
-          pathname: "/Habits/" + credentials
+          pathname: "/" + process.env.REACT_APP_PAGES_PATH_CHOOSEHABIT + "/" + credentials
         });
       } else {
         // if status invalid

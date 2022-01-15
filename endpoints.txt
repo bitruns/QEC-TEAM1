@@ -1,4 +1,16 @@
 Frontend to backend:
 
+Create endpoint -> path: server/api/user/ 
+-> POST request
+-> Information: body (see user.js structure)
+{
+    userName: {},
+    password: {},
+    email: {}
+}
+
+
+Habits endpoint -> 
 
 Backend to frontend:
+

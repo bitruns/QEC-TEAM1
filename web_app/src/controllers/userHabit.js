@@ -18,7 +18,6 @@ const create = async (req, res) => {
       try {
         await habit.save();
       } catch(e) {
-        console.log('here ' + e);
         res.status(500).send(e);
       }
       habitId = habit._id.toString();
@@ -46,17 +45,12 @@ const create = async (req, res) => {
 };
 
 const read = async (req, res) => {
-  console.log(req.query._id);
   const user = await User.findById(req.query._id).exec();
-  console.log(user);
 
   const habits = [];
   for(const userHabit of user.habits) {
-    console.log(userHabit);
     const habitId = userHabit.habitId.toString();
-    console.log('habitId: ' + habitId);
     const habit = await Habit.findById(habitId).exec();
-    console.log(habit);
     if(habit) {
       habits.push(habit);
     } else {

@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import PageNotFound from './Pages/PageNotFound';
 import SignUp from './Pages/Signup';
+import ChooseHabit from './Pages/ChooseHabit';
 import Header from './Components/Header';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Switch> 
         <Route exact path={"/"}
           render={props => (
-            <Home {...props}/>
+            <Login {...props}/>
           )}
         />
         <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_HOME}
@@ -47,6 +48,11 @@ function App() {
         <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_HABITTRACKER}
           render={props => (
             <Home {...props}/>
+          )}
+        />
+        <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_CHOOSEHABIT + "/*"}
+          render={props => (
+            <ChooseHabit {...props}/>
           )}
         />
         <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_HABITSEARCH}

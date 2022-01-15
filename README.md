@@ -8,7 +8,15 @@ Use this Repository to keep track of your project changes and collaborate on cod
 
 Push any changes to your project EVERY HOUR, this is a **requirement** outlined in the delegate package and **failure to do so could be grounds for disqualification!!!** The updates dont have to be strictly 60 minutes apart, but there should be roughly 1 every hour.
 
+# About project
+We built a React web app with an expressJS backend and a mongoDB database.
 
+1. User signs up or logs in
+2. User selects habits and schedules reminders
+3. User information is uploaded to the database
+4. Reminders are scheduled
+5. User receives push notification about habit with Yes/No option. If yes, provide an encouraging comment. If no, return a suggestion from the database and provide suggestion to the user
+6. Update habit score in the database based on response to notification
 
 # How to use
 

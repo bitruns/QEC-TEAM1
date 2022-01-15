@@ -45,8 +45,6 @@ const update = async (req, res) => {
     ...req.body,
   };
 
-  console.log(req.query._id);
-
   const habit = await Habit.findByIdAndUpdate(req.query._id, updateObj, {new: true}).exec();
 
   if(habit) {

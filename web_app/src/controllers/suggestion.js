@@ -33,8 +33,6 @@ const update = async (req, res) => {
     ...req.body,
   };
 
-  console.log(req.query._id);
-
   const suggestion = await Suggestion.findByIdAndUpdate(req.query._id, updateObj, {new: true}).exec();
 
   if(suggestion) {

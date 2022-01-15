@@ -3,7 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import EndpointData from './Pages/EndpointData';
 import Home from './Pages/Home';
+import Login from './Pages/Login';
 import PageNotFound from './Pages/PageNotFound';
+import SignUp from './Pages/Signup';
 
 function App() {
   return (
@@ -18,6 +20,16 @@ function App() {
         <Route exact path="/EndpointData"
           render={props => (
             <EndpointData {...props}/>
+          )}
+        />
+        <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_SIGNUP}
+          render={props => (
+            <SignUp {...props}/>
+          )}
+        />
+        <Route exact path={"/" + process.env.REACT_APP_PAGES_PATH_LOGIN}
+          render={props => (
+            <Login {...props}/>
           )}
         />
         <Route 

@@ -89,7 +89,7 @@ const Habits = (props) => {
     <Box spacing={2}>
       <Box>
         {/* page title */}
-        <Typography variant="h5">"What Habit do you want to Improve"</Typography>
+        <Typography variant="h5">What Habit do you want to Improve</Typography>
       </Box>
         <br/>
         <br/>
@@ -114,7 +114,7 @@ const Habits = (props) => {
         <Grid item xs={1} />
         <Grid item xs={10}>
           <Typography variant="body1" className={classes.instructions}>What is this habit? Explain it in a few words. Leave this empty if you chose an existing habit.</Typography>
-          <TextField label="Habit Explanation" onChange={(val) => setNewHabitExplanation(val)}/>
+          <TextField label="Habit Explanation" onChange={(event) => setNewHabitExplanation(event.target.value)}/>
         </Grid>
         <Grid item xs={1} />
         <Grid item xs={1} />

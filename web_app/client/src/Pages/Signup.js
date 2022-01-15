@@ -50,7 +50,7 @@ function Copyright(props) {
        const credentials = id;
        localStorage.setItem('credentials', credentials);
         history.push({
-          pathname: "/" + process.env.REACT_APP_PAGES_PATH_CHOOSEHABIT + credentials
+          pathname: "/" + process.env.REACT_APP_PAGES_PATH_CHOOSEHABIT + "/" + credentials
         });
      }
    };

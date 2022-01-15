@@ -59,7 +59,7 @@ t.test('expected UI flow', async t => {
         explanation: "sleeping is good for you",
         // suggestion: ["have a good night routine"],
       },
-      reminder: Date(""),
+      reminder: Date(""), // TODO: support recurring reminders
       score: 0.7,
     },
     {
